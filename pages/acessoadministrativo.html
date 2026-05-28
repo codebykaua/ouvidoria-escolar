@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acesso administrativo - Fala CETI - Amargosa</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="icon" type="image/png" href="../assets/img/logoceti1.png" />
+</head>
+<body>
+  <div class="page admin-dashboard-page">
+    <header class="topbar">
+      <div class="container dashboard-titlebar">
+        <h1 class="dashboard-title">Central de Administrador</h1>
+
+        <button class="admin-profile" id="admin-logout" type="button" aria-label="Sair do painel administrativo">
+          <span class="admin-profile-avatar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M6 21a6 6 0 0 1 12 0" />
+            </svg>
+          </span>
+          <span>
+            <strong id="admin-user-name">Coordenação</strong>
+            <small id="admin-user-role">Administrador</small>
+          </span>
+          <svg class="profile-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero dashboard-hero">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <div class="badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6l-7-3Z" />
+                <path d="m9 12 2 2 4-5" />
+              </svg>
+              Painel administrativo
+            </div>
+
+            <h1>Gerencie as <span>manifestações</span></h1>
+            <p class="hero-copy">Acompanhe as solicitações enviadas pelos estudantes, responda às mensagens e atualize o status conforme o andamento: Recebida, Em análise, Em andamento ou Resolvida.</p>
+          </div>
+
+          <div class="hero-art admin-art dashboard-art" aria-label="Ilustração do painel administrativo">
+            <div class="art-sky"></div>
+            <div class="cloud one"></div>
+            <div class="cloud two"></div>
+            <div class="tree left"></div>
+            <div class="tree right"></div>
+
+            <div class="school">
+              <div class="roof"></div>
+              <div class="wing left"></div>
+              <div class="wing right"></div>
+              <div class="main"></div>
+              <div class="badge-mini"></div>
+              <div class="label">CETI</div>
+              <div class="door"></div>
+              <div class="window w1"></div>
+              <div class="window w2"></div>
+              <div class="window w3"></div>
+              <div class="window w4"></div>
+              <div class="window w5"></div>
+              <div class="window w6"></div>
+            </div>
+
+            <div class="bubble blue">
+              <div class="dots"><span></span><span></span><span></span></div>
+            </div>
+
+            <div class="dashboard-status-board">
+              <div class="board-status-row received"><span></span>Recebida</div>
+              <div class="board-status-row analysis"><span></span>Em análise</div>
+              <div class="board-status-row progress"><span></span>Em andamento</div>
+              <div class="board-status-row resolved"><span></span>Resolvida</div>
+            </div>
+
+            <div class="plants"><span></span><span></span><span></span></div>
+
+            <div class="person girl admin-person">
+              <div class="hair"></div>
+              <div class="head"></div>
+              <div class="eye left"></div>
+              <div class="eye right"></div>
+              <div class="glasses"></div>
+              <div class="smile"></div>
+              <div class="body"></div>
+              <div class="lanyard"></div>
+              <div class="id-card"></div>
+              <div class="arm left"></div>
+              <div class="arm right"></div>
+              <div class="hand"></div>
+            </div>
+
+            <div class="laptop"></div>
+            <div class="swoosh"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container dashboard-grid" aria-label="Gerenciamento de manifestações">
+        <section class="dashboard-card requests-card">
+          <h2 class="section-title">Solicitações recebidas</h2>
+
+          <div class="dashboard-filters">
+            <label class="dashboard-search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <path d="m20 20-4-4" />
+              </svg>
+              <input id="admin-search" type="search" placeholder="Buscar por protocolo ou assunto" />
+            </label>
+
+            <label class="dashboard-select">
+              <span class="sr-only">Status</span>
+              <select id="admin-status-filter">
+                <option value="">Status</option>
+                <option>Recebida</option>
+                <option>Em análise</option>
+                <option>Em andamento</option>
+                <option>Resolvida</option>
+                <option>Arquivada</option>
+              </select>
+            </label>
+
+            <label class="dashboard-select">
+              <span class="sr-only">Turma</span>
+              <select id="admin-turma-filter">
+                <option value="">Turma</option>
+                <option>1º A</option>
+                <option>1º B</option>
+                <option>2º A</option>
+                <option>2º B</option>
+                <option>3º A</option>
+                <option>3º B</option>
+              </select>
+            </label>
+
+            <button class="filter-button" id="admin-filter-button" type="button" aria-label="Filtrar solicitações">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M4 5h16l-6 7v5l-4 2v-7L4 5Z" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="submission-feedback" id="admin-dashboard-feedback" aria-live="polite" hidden>
+            <h3 id="admin-dashboard-feedback-title"></h3>
+            <p id="admin-dashboard-feedback-message"></p>
+          </div>
+
+          <div class="requests-table-wrap">
+            <table class="requests-table">
+              <thead>
+                <tr>
+                  <th>Protocolo</th>
+                  <th>Tipo</th>
+                  <th>Assunto</th>
+                  <th>Turma</th>
+                  <th>Status</th>
+                  <th>Data</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="manifestacoes-tbody">
+                <tr>
+                  <td colspan="7">Carregando manifestações do Firebase...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-footer">
+            <span id="table-count">Carregando registros...</span>
+            <div class="pagination">
+              <button type="button" aria-label="Página anterior">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="m15 18-6-6 6-6" />
+                </svg>
+              </button>
+              <button class="active" type="button">1</button>
+              <button type="button">2</button>
+              <button type="button">3</button>
+              <button type="button" aria-label="Próxima página">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <aside class="dashboard-card detail-admin-card">
+          <h2 class="section-title">Detalhes da manifestação</h2>
+
+          <dl class="admin-detail-list">
+            <div>
+              <dt>Protocolo:</dt>
+              <dd id="detail-protocolo">Selecione uma manifestação</dd>
+            </div>
+            <div>
+              <dt>Nome:</dt>
+              <dd id="detail-nome">-</dd>
+            </div>
+            <div>
+              <dt>Matrícula:</dt>
+              <dd id="detail-matricula">-</dd>
+            </div>
+            <div>
+              <dt>Turma:</dt>
+              <dd id="detail-turma">-</dd>
+            </div>
+            <div>
+              <dt>Tipo:</dt>
+              <dd id="detail-tipo">-</dd>
+            </div>
+            <div>
+              <dt>Assunto:</dt>
+              <dd id="detail-assunto">-</dd>
+            </div>
+            <div>
+              <dt>Descrição:</dt>
+              <dd id="detail-descricao">-</dd>
+            </div>
+            <div>
+              <dt>Prioridade:</dt>
+              <dd id="detail-prioridade">-</dd>
+            </div>
+            <div>
+              <dt>Data de envio:</dt>
+              <dd id="detail-criado-em">-</dd>
+            </div>
+          </dl>
+
+          <section class="admin-additional-messages" aria-label="Mensagens adicionais">
+            <h3>Mensagens adicionais</h3>
+            <div class="protocol-messages-list" id="admin-mensagens-lista">
+              <p class="empty-messages">Nenhuma mensagem adicional foi enviada neste protocolo.</p>
+            </div>
+          </section>
+
+          <div class="admin-status-editor">
+            <span class="field-label">Status</span>
+            <div class="status-options" id="status-options">
+              <button type="button" data-status="Recebida">Recebida</button>
+              <button class="selected" type="button" data-status="Em análise">Em análise</button>
+              <button type="button" data-status="Em andamento">Em andamento</button>
+              <button type="button" data-status="Resolvida">Resolvida</button>
+              <button type="button" data-status="Arquivada">Arquivada</button>
+            </div>
+          </div>
+
+          <label class="admin-textarea-field">
+            <span class="field-label">Resposta da escola</span>
+            <span class="textarea-shell">
+              <textarea id="admin-resposta" maxlength="1000" placeholder="Digite a resposta da escola para o solicitante."></textarea>
+              <span id="resposta-counter">0/1000</span>
+            </span>
+          </label>
+
+          <label class="admin-textarea-field">
+            <span class="field-label">Observação interna <em>(opcional)</em></span>
+            <span class="textarea-shell">
+              <textarea id="admin-observacao" maxlength="500" placeholder="Anote informações internas, próximas ações ou responsáveis."></textarea>
+              <span id="observacao-counter">0/500</span>
+            </span>
+          </label>
+
+          <div class="admin-detail-actions">
+            <button class="btn btn-primary" id="salvar-atualizacao" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <rect x="5" y="10" width="14" height="10" rx="2" />
+                <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+                <path d="M12 14v2" />
+              </svg>
+              Salvar atualização
+            </button>
+            <button class="btn admin-archive-button" id="arquivar-manifestacao" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="5" rx="1" />
+                <path d="M5 9v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9" />
+                <path d="M10 13h4" />
+              </svg>
+              Arquivar
+            </button>
+          </div>
+
+          <p class="admin-save-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 8h.01" />
+              <path d="M11 12h1v5h1" />
+            </svg>
+            O status e a resposta salvos aqui serão exibidos ao solicitante quando ele consultar o protocolo.
+          </p>
+
+          <div class="submission-feedback" id="detail-feedback" aria-live="polite" hidden>
+            <h3 id="detail-feedback-title"></h3>
+            <p id="detail-feedback-message"></p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="container dashboard-summary-card">
+        <h2 class="section-title">Resumo do painel</h2>
+        <div class="summary-grid">
+          <article class="summary-item received">
+            <div class="summary-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M9 5h6" />
+                <path d="M9 3h6v4H9z" />
+                <rect x="5" y="5" width="14" height="16" rx="2" />
+                <path d="M9 12h6" />
+                <path d="M9 16h4" />
+              </svg>
+            </div>
+            <span>Recebidas</span>
+            <strong id="summary-recebidas">0</strong>
+          </article>
+
+          <article class="summary-item analysis">
+            <div class="summary-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <path d="m20 20-4-4" />
+                <path d="M11 8v3l2 2" />
+              </svg>
+            </div>
+            <span>Em análise</span>
+            <strong id="summary-analise">0</strong>
+          </article>
+
+          <article class="summary-item progress">
+            <div class="summary-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M21 12a9 9 0 0 1-15 6.7L3 16" />
+                <path d="M3 21v-5h5" />
+                <path d="M3 12a9 9 0 0 1 15-6.7L21 8" />
+                <path d="M21 3v5h-5" />
+              </svg>
+            </div>
+            <span>Em andamento</span>
+            <strong id="summary-andamento">0</strong>
+          </article>
+
+          <article class="summary-item resolved">
+            <div class="summary-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="m8 12 3 3 5-6" />
+              </svg>
+            </div>
+            <span>Resolvidas</span>
+            <strong id="summary-resolvidas">0</strong>
+          </article>
+
+          <article class="summary-item archived">
+            <div class="summary-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="5" rx="1" />
+                <path d="M5 9v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9" />
+                <path d="M10 13h4" />
+              </svg>
+            </div>
+            <span>Arquivadas</span>
+            <strong id="summary-arquivadas">0</strong>
+          </article>
+
+          <article class="summary-item total">
+            <div class="summary-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M4 6h16" />
+                <path d="M4 12h16" />
+                <path d="M4 18h16" />
+              </svg>
+            </div>
+            <span>Total</span>
+            <strong id="summary-total">0</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="container">
+        <aside class="responsibility dashboard-responsibility">
+          <div class="responsibility-text">
+            <div class="shield">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6l-7-3Z" />
+                <path d="m9 12 2 2 4-5" />
+              </svg>
+            </div>
+            <div>
+              <h2>As atualizações feitas neste painel orientam o retorno exibido ao solicitante no acompanhamento por protocolo.</h2>
+            </div>
+          </div>
+
+          <div class="student-row" aria-hidden="true">
+            <div class="mini-person">
+              <div class="mini-hair"></div>
+              <div class="face"></div>
+              <div class="shirt"></div>
+            </div>
+            <div class="mini-person">
+              <div class="mini-hair"></div>
+              <div class="face"></div>
+              <div class="shirt"></div>
+            </div>
+            <div class="mini-person">
+              <div class="mini-hair"></div>
+              <div class="face"></div>
+              <div class="shirt"></div>
+            </div>
+            <svg class="ghost-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6l-7-3Z" />
+              <path d="m9 12 2 2 4-5" />
+            </svg>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="stripe"><span></span><span></span><span></span><span></span></div>
+      <div class="container footer-content">
+        <div class="footer-brand">
+          <img class="school-logo" src="../assets/img/logoceti1.png" alt="" aria-hidden="true" />
+          <div>
+            <strong>Fala CETI - Amargosa</strong>
+            <span>Ouvidoria escolar digital</span>
+          </div>
+        </div>
+
+        <p class="footer-copy">Um canal aberto de diálogo para construir uma escola cada vez melhor.</p>
+
+        <div class="footer-pillars">
+          <div class="pillar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6l-7-3Z" />
+            </svg>
+            Segurança
+          </div>
+          <div class="pillar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <rect x="5" y="10" width="14" height="10" rx="2" />
+              <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+              <path d="M12 14v2" />
+            </svg>
+            Sigilo
+          </div>
+          <div class="pillar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M16 21v-2a4 4 0 0 0-8 0v2" />
+              <circle cx="12" cy="7" r="4" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              <path d="M2 21v-2a4 4 0 0 1 3-3.87" />
+              <path d="M8 3.13a4 4 0 0 0 0 7.75" />
+            </svg>
+            Respeito
+          </div>
+        </div>
+
+        <p class="copyright">© 2024 Fala CETI - Amargosa. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  </div>
+  <script type="module" src="../assets/js/acessoadministrativo.js"></script>
+</body>
+</html>

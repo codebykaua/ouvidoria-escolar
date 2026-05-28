@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Notas de Atualização - Fala CETI - Amargosa</title>
+
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="icon" type="image/png" href="../assets/img/logoceti1.png" />
+
+  <style>
+    :root {
+      --notes-bg: #f8fafc;
+      --notes-surface: #ffffff;
+      --notes-border: #e3e8f1;
+      --notes-blue: #0756d6;
+      --notes-blue-2: #0d6be8;
+      --notes-green: #23934e;
+      --notes-orange: #ff7a1a;
+      --notes-text: #14264d;
+      --notes-muted: #516078;
+      --notes-shadow: 0 18px 36px rgba(20, 38, 77, 0.12);
+    }
+
+    body {
+      background: var(--notes-bg);
+    }
+
+    .notes-page {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 8% 9%, rgba(7, 86, 214, 0.06), transparent 24rem),
+        linear-gradient(180deg, #ffffff 0%, #fbfdff 58%, #ffffff 100%);
+    }
+
+    .notes-hero {
+      padding: 56px 0 32px;
+    }
+
+    .notes-card {
+      background: var(--notes-surface);
+      border: 1px solid var(--notes-border);
+      border-radius: 22px;
+      box-shadow: var(--notes-shadow);
+      overflow: hidden;
+    }
+
+    .notes-hero-panel {
+      background: linear-gradient(135deg, var(--notes-blue), var(--notes-green));
+      color: #ffffff;
+      padding: 42px 36px;
+    }
+
+    .document-heading {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .document-logo {
+      width: 76px;
+      height: 76px;
+      flex: 0 0 auto;
+      object-fit: cover;
+      padding: 6px;
+      border-radius: 16px;
+      background: #ffffff;
+      box-shadow: 0 14px 28px rgba(20, 38, 77, 0.18);
+    }
+
+    .document-heading-text {
+      min-width: 0;
+    }
+
+    .notes-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 7px 15px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+    }
+
+    .notes-hero-panel h1 {
+      max-width: 820px;
+      margin: 0 0 12px;
+      color: #ffffff;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+    }
+
+    .notes-hero-panel p {
+      max-width: 760px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    .notes-content {
+      padding: 34px;
+    }
+
+    .notice-box {
+      background: #fff7ed;
+      border-left: 5px solid var(--notes-orange);
+      color: #7c2d12;
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 30px;
+      font-size: 0.96rem;
+    }
+
+    .notice-box p {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+
+    .summary-item {
+      background: #ffffff;
+      border: 1px solid var(--notes-border);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 10px 24px rgba(20, 38, 77, 0.06);
+    }
+
+    .summary-item span {
+      display: block;
+      color: var(--notes-muted);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .summary-item strong {
+      color: var(--notes-blue);
+      font-size: 1.15rem;
+      font-weight: 900;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+      border-left: 3px solid rgba(35, 147, 78, 0.22);
+    }
+
+    .version-card {
+      position: relative;
+      background: #ffffff;
+      border: 1px solid var(--notes-border);
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 30px;
+      box-shadow: 0 12px 28px rgba(20, 38, 77, 0.07);
+    }
+
+    .version-card::before {
+      content: "";
+      position: absolute;
+      left: -40px;
+      top: 32px;
+      width: 18px;
+      height: 18px;
+      background: var(--notes-green);
+      border: 4px solid #d8f7e5;
+      border-radius: 50%;
+    }
+
+    .version-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .version-title h2 {
+      color: var(--notes-text);
+      font-size: 1.55rem;
+      line-height: 1.2;
+      margin: 0 0 6px;
+    }
+
+    .version-title p {
+      color: var(--notes-muted);
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .version-tag {
+      display: inline-flex;
+      align-items: center;
+      background: #ecfdf5;
+      color: #166534;
+      border: 1px solid rgba(35, 147, 78, 0.25);
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .version-description {
+      color: var(--notes-muted);
+      line-height: 1.7;
+      font-size: 0.98rem;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      color: var(--notes-blue);
+      font-size: 1.05rem;
+      font-weight: 900;
+      margin: 22px 0 10px;
+    }
+
+    .version-card ul {
+      margin: 0 0 0 22px;
+      color: var(--notes-muted);
+    }
+
+    .version-card li {
+      margin-bottom: 8px;
+      line-height: 1.55;
+    }
+
+    .highlight-box {
+      background: #eff6ff;
+      border-left: 5px solid var(--notes-blue-2);
+      color: #075985;
+      border-radius: 12px;
+      padding: 17px 18px;
+      margin-top: 22px;
+      line-height: 1.6;
+    }
+
+    .future-box {
+      background: #ffffff;
+      border: 1px dashed var(--notes-border);
+      border-radius: 18px;
+      padding: 24px;
+      margin-top: 34px;
+    }
+
+    .future-box h2 {
+      color: var(--notes-text);
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+    }
+
+    .future-box p {
+      color: var(--notes-muted);
+      margin: 0 0 12px;
+      line-height: 1.65;
+    }
+
+    .future-box ul {
+      margin-left: 22px;
+      color: var(--notes-muted);
+    }
+
+    .future-box li {
+      margin-bottom: 8px;
+    }
+
+    .notes-footer {
+      text-align: center;
+      color: var(--notes-muted);
+      padding: 28px 0 44px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 820px) {
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .notes-content {
+        padding: 24px;
+      }
+
+      .notes-hero-panel {
+        padding: 32px 24px;
+      }
+
+      .document-logo {
+        width: 64px;
+        height: 64px;
+      }
+
+      .timeline {
+        padding-left: 20px;
+      }
+
+      .version-card::before {
+        left: -32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page notes-page">
+    <header class="topbar">
+      <div class="container nav">
+        <a class="brand" href="../index.html" aria-label="Fala CETI - Amargosa">
+          <img class="school-logo" src="../assets/img/logoceti1.png" alt="Colégio Estadual de Tempo Integral de Amargosa" />
+          <div class="wordmark">
+            <strong>Fala CETI - Amargosa</strong>
+            <span>Ouvidoria escolar digital</span>
+          </div>
+        </a>
+
+        <nav class="menu" aria-label="Navegação principal">
+          <a href="../index.html">Início</a>
+          <a href="manifestacao.html">Enviar manifestação</a>
+          <a href="acompanhar.html">Acompanhar</a>
+          <a class="active" href="notas_atualizacoes.html">Atualizações</a>
+          <a href="termos.html">Termos</a>
+          <a href="admin.html">Admin</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="notes-hero">
+        <div class="container">
+          <div class="notes-card">
+            <div class="notes-hero-panel">
+              <div class="document-heading">
+                <img class="document-logo" src="../assets/img/logoceti1.png" alt="Logo do CETI Amargosa" />
+                <div class="document-heading-text">
+                  <span class="notes-label">Histórico do projeto</span>
+                  <h1>Notas de Atualização</h1>
+                </div>
+              </div>
+              <p>
+                Esta página registra a evolução do sistema Fala CETI - Amargosa, mostrando a versão inicial,
+                as funcionalidades criadas e as próximas melhorias planejadas para a ouvidoria escolar digital.
+              </p>
+            </div>
+
+            <div class="notes-content">
+              <div class="notice-box">
+                <p>
+                  A versão <strong>1.0.0</strong> marcou a criação da primeira versão funcional
+                  da ouvidoria escolar digital. Já a versão <strong>1.1.0</strong> trouxe melhorias
+                  importantes de segurança, privacidade e controle de acesso ao banco de dados.
+                </p>
+              </div>
+
+              <div class="summary-grid">
+                <div class="summary-item">
+                  <span>Projeto</span>
+                  <strong>Fala CETI - Amargosa</strong>
+                </div>
+
+                <div class="summary-item">
+                  <span>Versão atual</span>
+                  <strong>1.1.0</strong>
+                </div>
+
+                <div class="summary-item">
+                  <span>Status</span>
+                  <strong>Segurança reforçada</strong>
+                </div>
+              </div>
+
+              <div class="timeline">
+                <article class="version-card">
+                  <div class="version-header">
+                    <div class="version-title">
+                      <h2>Versão 1.0.0 - Criação inicial</h2>
+                      <p>Primeira versão funcional do sistema de ouvidoria escolar digital.</p>
+                    </div>
+                    <span class="version-tag">Primeira versão</span>
+                  </div>
+
+                  <p class="version-description">
+                    A versão 1.0.0 marcou a criação inicial do Fala CETI - Amargosa, uma plataforma de ouvidoria
+                    escolar digital desenvolvida para permitir que estudantes enviem manifestações,
+                    acompanhem o andamento pelo protocolo e recebam respostas da equipe responsável.
+                    O projeto foi criado com foco em organização, comunicação escolar, facilidade de uso
+                    e registro estruturado das solicitações.
+                  </p>
+
+                  <h3 class="section-title">Páginas criadas</h3>
+                  <ul>
+                    <li>Página inicial com apresentação da ouvidoria escolar digital.</li>
+                    <li>Página para envio de manifestação.</li>
+                    <li>Página para acompanhar manifestação por protocolo.</li>
+                    <li>Página de login da área administrativa.</li>
+                    <li>Painel administrativo para gerenciar manifestações recebidas.</li>
+                  </ul>
+
+                  <h3 class="section-title">Funcionalidades da página inicial</h3>
+                  <ul>
+                    <li>Apresentação do sistema Fala CETI - Amargosa como canal digital da ouvidoria escolar.</li>
+                    <li>Botões de acesso rápido para enviar manifestação, acompanhar solicitação e acessar a área administrativa.</li>
+                    <li>Interface visual moderna com identidade do CETI Amargosa.</li>
+                    <li>Navegação principal entre as páginas do sistema.</li>
+                  </ul>
+
+                  <h3 class="section-title">Funcionalidades do envio de manifestação</h3>
+                  <ul>
+                    <li>Opção para o usuário escolher se deseja se identificar ou enviar de forma não identificada.</li>
+                    <li>Campos para nome, matrícula e turma quando a manifestação for identificada.</li>
+                    <li>Seleção do tipo de manifestação, como reclamação, sugestão, demanda ou elogio.</li>
+                    <li>Campo para assunto e descrição da manifestação.</li>
+                    <li>Definição de prioridade da solicitação.</li>
+                    <li>Validação dos dados antes do envio.</li>
+                    <li>Geração automática de protocolo no formato <strong>FALA-CETI-XXXXXX</strong>.</li>
+                    <li>Registro da manifestação no Firebase/Firestore.</li>
+                    <li>Exibição do protocolo para o usuário acompanhar posteriormente.</li>
+                  </ul>
+
+                  <h3 class="section-title">Funcionalidades de acompanhamento</h3>
+                  <ul>
+                    <li>Consulta de manifestação por meio do protocolo recebido.</li>
+                    <li>Exibição do status atual da solicitação.</li>
+                    <li>Exibição de informações como tipo, assunto, turma, data de criação e atualização.</li>
+                    <li>Visualização da resposta enviada pela equipe escolar.</li>
+                    <li>Área de mensagens para continuidade da comunicação dentro do protocolo.</li>
+                    <li>Possibilidade de o usuário enviar novas mensagens relacionadas à manifestação.</li>
+                  </ul>
+
+                  <h3 class="section-title">Funcionalidades da área administrativa</h3>
+                  <ul>
+                    <li>Login administrativo com Firebase Authentication.</li>
+                    <li>Redirecionamento automático para o painel quando o usuário já está autenticado.</li>
+                    <li>Painel para listar manifestações recebidas.</li>
+                    <li>Busca por protocolo ou assunto.</li>
+                    <li>Filtros por status e turma.</li>
+                    <li>Visualização dos detalhes de cada manifestação.</li>
+                    <li>Atualização do status da solicitação.</li>
+                    <li>Registro de resposta administrativa para o solicitante.</li>
+                    <li>Campo de observação interna para acompanhamento administrativo.</li>
+                    <li>Possibilidade de arquivar manifestações.</li>
+                    <li>Resumo com quantidade de manifestações por status.</li>
+                  </ul>
+
+                  <h3 class="section-title">Tecnologias utilizadas</h3>
+                  <ul>
+                    <li>HTML para a estrutura das páginas.</li>
+                    <li>CSS para o design, responsividade e identidade visual do sistema.</li>
+                    <li>JavaScript modular para a lógica de envio, consulta, autenticação e administração.</li>
+                    <li>Firebase/Firestore para armazenamento das manifestações e mensagens.</li>
+                    <li>Firebase Authentication para acesso administrativo.</li>
+                  </ul>
+
+                  <h3 class="section-title">Organização do projeto</h3>
+                  <ul>
+                    <li>Separação entre arquivos HTML, CSS e JavaScript.</li>
+                    <li>Criação de páginas específicas para cada função do sistema.</li>
+                    <li>Uso de arquivos JavaScript separados para envio, acompanhamento e administração.</li>
+                    <li>Estrutura pensada para facilitar manutenção, revisão de segurança e futuras melhorias.</li>
+                  </ul>
+
+                  <div class="highlight-box">
+                    <strong>Resumo da versão:</strong> a versão 1.0.0 criou a base funcional do Fala CETI - Amargosa,
+                    permitindo o envio de manifestações, geração de protocolo, acompanhamento pelo usuário,
+                    comunicação por mensagens e gerenciamento completo pela área administrativa.
+                  </div>
+                </article>
+
+                <article class="version-card">
+                  <div class="version-header">
+                    <div class="version-title">
+                      <h2>Versão 1.1.0 - Atualização de segurança</h2>
+                      <p>Atualização voltada para proteção dos dados, privacidade e controle de acesso.</p>
+                    </div>
+                    <span class="version-tag">Segurança</span>
+                  </div>
+
+                  <p class="version-description">
+                    A versão 1.1.0 marcou uma etapa importante de amadurecimento do Fala CETI - Amargosa.
+                    Nesta atualização, o foco principal foi reforçar a segurança do Firebase/Firestore,
+                    proteger melhor as manifestações enviadas, restringir o acesso administrativo e
+                    impedir que dados sensíveis fiquem expostos publicamente.
+                  </p>
+
+                  <h3 class="section-title">Melhorias no envio de manifestações</h3>
+                  <ul>
+                    <li>Ajuste no envio de manifestações não identificadas.</li>
+                    <li>Campos de nome, matrícula e turma agora aparecem apenas quando o usuário escolhe se identificar.</li>
+                    <li>Correção para garantir que o protocolo seja exibido mesmo em manifestações não identificadas.</li>
+                    <li>Aumento do protocolo para 8 caracteres, melhorando a dificuldade de adivinhação.</li>
+                    <li>Manutenção da escolha do grau da manifestação: Baixa, Média e Alta.</li>
+                  </ul>
+
+                  <h3 class="section-title">Melhorias nas regras do Firebase</h3>
+                  <ul>
+                    <li>Substituição das regras abertas do Firestore por regras controladas.</li>
+                    <li>Bloqueio da leitura pública de todas as manifestações.</li>
+                    <li>Permissão para consulta pública apenas por protocolo específico.</li>
+                    <li>Bloqueio de listagem pública da coleção de manifestações.</li>
+                    <li>Restrição da listagem completa apenas ao administrador autenticado.</li>
+                    <li>Controle dos campos permitidos no envio de uma nova manifestação.</li>
+                    <li>Validação do formato do protocolo no padrão <strong>FALA-CETI-XXXXXX</strong>.</li>
+                  </ul>
+
+                  <h3 class="section-title">Proteção da área administrativa</h3>
+                  <ul>
+                    <li>Permissão de acesso administrativo apenas para conta autorizada.</li>
+                    <li>Restrição de atualização de status, resposta e observação interna ao administrador.</li>
+                    <li>Bloqueio de alteração indevida das manifestações por usuários comuns.</li>
+                    <li>Bloqueio de exclusão de manifestações pelo sistema.</li>
+                  </ul>
+
+                  <h3 class="section-title">Proteção das mensagens</h3>
+                  <ul>
+                    <li>Permissão para envio de mensagens apenas dentro de protocolos existentes.</li>
+                    <li>Controle para impedir que usuários comuns enviem mensagens como se fossem administradores.</li>
+                    <li>Bloqueio de edição ou exclusão de mensagens depois de enviadas.</li>
+                    <li>Limitação do tamanho das mensagens enviadas pelo protocolo.</li>
+                  </ul>
+
+                  <h3 class="section-title">Privacidade e segurança dos dados</h3>
+                  <ul>
+                    <li>Redução do risco de exposição de nome, matrícula, turma e descrição da manifestação.</li>
+                    <li>Proteção das respostas administrativas e observações internas.</li>
+                    <li>Melhoria na separação entre acesso público por protocolo e acesso administrativo completo.</li>
+                    <li>Maior controle sobre quem pode criar, consultar, listar e atualizar dados.</li>
+                  </ul>
+
+                  <div class="highlight-box">
+                    <strong>Resumo da atualização:</strong> a versão 1.1.0 tornou o Fala CETI - Amargosa mais seguro,
+                    protegendo melhor as manifestações, mensagens e dados administrativos. A principal melhoria
+                    foi substituir regras abertas por regras específicas no Firebase, permitindo consulta por
+                    protocolo e restringindo o gerenciamento completo apenas ao administrador autorizado.
+                  </div>
+                </article>
+              </div>
+
+              <div class="future-box">
+                <h2>Próximas melhorias planejadas</h2>
+                <p>
+                  Em versões futuras, o sistema poderá receber melhorias de segurança, documentação,
+                  privacidade e organização, seguindo o mesmo processo de evolução aplicado em outros projetos.
+                </p>
+
+                <ul>
+                  <li>Testar continuamente as regras do Firestore após novas alterações no sistema.</li>
+                  <li>Criar Termos de Uso e Política de Privacidade para a ouvidoria.</li>
+                  <li>Aprimorar a página de Termos de Uso e Política de Privacidade conforme o uso real pela escola.</li>
+                  <li>Documentar quais dados são coletados e por qual finalidade.</li>
+                  <li>Melhorar o controle de acesso administrativo.</li>
+                  <li>Evitar leitura pública de manifestações sensíveis.</li>
+                  <li>Criar notas de atualização para futuras versões.</li>
+                  <li>Avaliar melhorias de interface e navegação entre as páginas.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <p class="notes-footer">
+            Fala CETI - Amargosa • Notas de Atualização • Projeto educacional
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
