@@ -63,7 +63,6 @@ const archiveButton = document.getElementById("arquivar-manifestacao");
 const detailFields = {
   protocolo: document.getElementById("detail-protocolo"),
   nome: document.getElementById("detail-nome"),
-  matricula: document.getElementById("detail-matricula"),
   turma: document.getElementById("detail-turma"),
   tipo: document.getElementById("detail-tipo"),
   assunto: document.getElementById("detail-assunto"),
@@ -218,7 +217,6 @@ function clearDetails() {
   selectedStatus = "Recebida";
   detailFields.protocolo.textContent = NOT_INFORMED;
   detailFields.nome.textContent = NOT_INFORMED;
-  detailFields.matricula.textContent = "Não informada";
   detailFields.turma.textContent = NOT_INFORMED;
   detailFields.tipo.innerHTML = `<span class="detail-type-dot"></span>${escapeHTML(NOT_INFORMED)}`;
   detailFields.assunto.textContent = NOT_INFORMED;
@@ -285,7 +283,6 @@ function renderDetails(data) {
   selectedProtocol = normalizeText(data.protocolo, data.id || "");
   detailFields.protocolo.textContent = selectedProtocol;
   detailFields.nome.textContent = identificado ? normalizeText(data.nome) : "Não identificado";
-  detailFields.matricula.textContent = identificado ? normalizeText(data.matricula, "Não informada") : "Não informada";
   detailFields.turma.textContent = normalizeText(data.turma);
   detailFields.tipo.innerHTML = `<span class="detail-type-dot"></span>${escapeHTML(tipo)}`;
   detailFields.assunto.textContent = normalizeText(data.assunto);
@@ -367,7 +364,7 @@ function populateTurmaFilter() {
   const currentValue = turmaFilter.value;
   const turmas = Array.from(new Set(manifestations.map((item) => normalizeText(item.turma, "")).filter(Boolean))).sort((a, b) => a.localeCompare(b, "pt-BR"));
 
-  turmaFilter.innerHTML = `<option value="">Turma</option>${turmas.map((turma) => `<option value="${escapeHTML(turma)}">${escapeHTML(turma)}</option>`).join("")}`;
+  turmaFilter.innerHTML = `<option value="">Série</option>${turmas.map((turma) => `<option value="${escapeHTML(turma)}">${escapeHTML(turma)}</option>`).join("")}`;
 
   if (turmas.includes(currentValue)) {
     turmaFilter.value = currentValue;

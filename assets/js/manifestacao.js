@@ -17,7 +17,6 @@ const db = getFirestore(app);
 const form = document.getElementById("manifestacao-form");
 const identificationFields = document.getElementById("identification-fields");
 const nomeInput = document.getElementById("nome");
-const matriculaInput = document.getElementById("matricula");
 const turmaSelect = document.getElementById("turma");
 const assuntoInput = document.getElementById("assunto");
 const descricaoInput = document.getElementById("descricao");
@@ -92,15 +91,12 @@ function syncIdentificationFields() {
 
   identificationFields.hidden = !identified;
   nomeInput.setAttribute("aria-required", String(identified));
-  matriculaInput.setAttribute("aria-required", String(identified));
   turmaSelect.setAttribute("aria-required", String(identified));
   nomeInput.disabled = !identified;
-  matriculaInput.disabled = !identified;
   turmaSelect.disabled = !identified;
 
   if (!identified) {
     nomeInput.value = "";
-    matriculaInput.value = "";
     turmaSelect.value = "";
   }
 }
@@ -108,7 +104,6 @@ function syncIdentificationFields() {
 function validateForm() {
   const identified = isIdentified();
   const nome = nomeInput.value.trim();
-  const matricula = matriculaInput.value.trim();
   const turma = turmaSelect.value.trim();
   const tipo = getCheckedValue("tipo");
   const assunto = assuntoInput.value.trim();
@@ -119,12 +114,8 @@ function validateForm() {
     return { valid: false, message: "Informe seu nome completo para enviar a manifestação identificada.", element: nomeInput };
   }
 
-  if (identified && !matricula) {
-    return { valid: false, message: "Informe sua matrícula para enviar a manifestação identificada.", element: matriculaInput };
-  }
-
   if (identified && !turma) {
-    return { valid: false, message: "Selecione sua turma para enviar a manifestação identificada.", element: turmaSelect };
+    return { valid: false, message: "Selecione sua série para enviar a manifestação identificada.", element: turmaSelect };
   }
 
   if (!tipo) {
@@ -148,7 +139,6 @@ function validateForm() {
     data: {
       identificado: identified,
       nome: identified ? nome : "",
-      matricula: identified ? matricula : "",
       turma: identified ? turma : "",
       tipo,
       assunto,
@@ -198,10 +188,22 @@ form.addEventListener("submit", async (event) => {
     criadoEm: serverTimestamp(),
     atualizadoEm: serverTimestamp()
   };
+  const manifestacaoCompatibilidade = {
+    ...manifestacao,
+    matricula: validation.data.identificado ? "Nao solicitada" : ""
+  };
 
   try {
     setSubmitState(true);
-    await setDoc(doc(db, "manifestacoes", protocolo), manifestacao);
+    try {
+      await setDoc(doc(db, "manifestacoes", protocolo), manifestacao);
+    } catch (error) {
+      if (error?.code !== "permission-denied") {
+        throw error;
+      }
+
+      await setDoc(doc(db, "manifestacoes", protocolo), manifestacaoCompatibilidade);
+    }
 
     keepFeedbackOnReset = true;
     form.reset();
