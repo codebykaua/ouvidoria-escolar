@@ -4095,3 +4095,601 @@
     font-size: 18px;
   }
 }
+
+/* Responsive hardening */
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  min-width: 0;
+}
+
+.page {
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+.container {
+  max-width: 100%;
+}
+
+.wordmark,
+.hero-content,
+.footer-brand div,
+.document-heading-text {
+  min-width: 0;
+}
+
+.requests-table-wrap {
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 900px) {
+  .container,
+  .admin-dashboard-page .topbar .container {
+    width: min(100% - 32px, 680px);
+  }
+
+  .nav,
+  .dashboard-titlebar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .brand {
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .wordmark strong,
+  .wordmark span {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .wordmark strong {
+    font-size: clamp(26px, 7vw, 38px);
+    line-height: 1.08;
+    letter-spacing: 0;
+  }
+
+  .wordmark span {
+    font-size: clamp(12px, 3.4vw, 15px);
+    line-height: 1.25;
+  }
+
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    gap: 8px;
+    white-space: normal;
+  }
+
+  .menu a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 9px 6px;
+    border-radius: 8px;
+    line-height: 1.15;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .menu a.active::after {
+    left: 10px;
+    right: 10px;
+    bottom: 3px;
+    height: 3px;
+  }
+
+  .hero {
+    padding: 34px 0 28px;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  h1 {
+    max-width: 100%;
+    margin-inline: auto;
+    font-size: clamp(34px, 9vw, 52px);
+    letter-spacing: 0;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+    margin-inline: auto;
+    font-size: clamp(16px, 3.8vw, 19px);
+    line-height: 1.55;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .btn {
+    min-height: 56px;
+    height: auto;
+    padding: 12px 18px;
+    line-height: 1.2;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .hero-art {
+    width: 100%;
+    max-width: 560px;
+    overflow: hidden;
+  }
+
+  .form-card,
+  .info-card,
+  .tracking-card,
+  .dashboard-card,
+  .dashboard-summary-card {
+    border-radius: 10px;
+  }
+
+  .footer-brand {
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 720px) {
+  .container,
+  .admin-dashboard-page .topbar .container {
+    width: min(100% - 28px, 520px);
+  }
+
+  .school-logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .brand {
+    align-items: center;
+  }
+
+  .wordmark strong {
+    font-size: clamp(23px, 6.6vw, 32px);
+  }
+
+  .menu {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    font-size: 13px;
+  }
+
+  .badge {
+    width: min(100%, 420px);
+    min-height: 42px;
+    margin-inline: auto;
+    padding: 8px 12px;
+    justify-content: center;
+    line-height: 1.2;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .hero-art {
+    width: 100% !important;
+    max-width: 440px;
+    min-height: 330px;
+    margin: 0 auto -70px !important;
+    transform: scale(0.78) !important;
+    transform-origin: top center !important;
+  }
+
+  .manifestation-art,
+  .tracking-art,
+  .admin-art {
+    min-height: 355px;
+  }
+
+  .section-title {
+    line-height: 1.15;
+    letter-spacing: 0;
+  }
+
+  .step-card,
+  .type-card,
+  .form-card,
+  .info-card,
+  .query-card,
+  .result-card,
+  .protocol-messages-card,
+  .dashboard-card,
+  .dashboard-summary-card,
+  .admin-login-card,
+  .admin-side-stack .info-card {
+    padding: 22px 16px;
+  }
+
+  .form-card .section-title,
+  .info-card .section-title,
+  .tracking-card .section-title,
+  .dashboard-card .section-title,
+  .dashboard-summary-card .section-title {
+    font-size: clamp(22px, 6vw, 28px);
+  }
+
+  .field input,
+  .field select,
+  .field textarea,
+  .input-with-icon input,
+  .protocol-field input,
+  .dashboard-search input,
+  .dashboard-select select,
+  .textarea-shell textarea {
+    font-size: 16px;
+  }
+
+  .choice-pill,
+  .priority-pill,
+  .manifestation-option,
+  .status-options button,
+  .small-action,
+  .copy-protocol {
+    min-height: 44px;
+  }
+
+  .manifestation-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .manifestation-option {
+    min-height: 96px;
+  }
+
+  .form-actions,
+  .query-card .form-actions,
+  .admin-detail-actions,
+  .protocol-message-actions {
+    gap: 12px;
+  }
+
+  .orientation-item,
+  .privacy-body,
+  .admin-access-item,
+  .admin-save-note {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .responsibility {
+    text-align: center;
+  }
+
+  .responsibility-text {
+    align-items: center;
+    text-align: center;
+  }
+
+  .student-row {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .dashboard-titlebar {
+    gap: 12px;
+    min-height: 0;
+    padding: 16px 0;
+  }
+
+  .dashboard-title {
+    font-size: clamp(24px, 8vw, 34px);
+    text-align: center;
+  }
+
+  .dashboard-filters {
+    gap: 10px;
+  }
+
+  .requests-table-wrap {
+    margin-inline: -16px;
+    padding-inline: 16px;
+  }
+
+  .progress-line {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 26px;
+  }
+
+  .progress-line::before {
+    left: 13px;
+    right: auto;
+    top: 10px;
+    bottom: 10px;
+    width: 3px;
+    height: auto;
+  }
+
+  .progress-step {
+    grid-template-columns: 27px 1fr;
+    justify-items: start;
+    text-align: left;
+  }
+
+  .status-options {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .protocol-box strong {
+    font-size: clamp(18px, 6vw, 24px);
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 520px) {
+  .container,
+  .admin-dashboard-page .topbar .container {
+    width: min(100% - 24px, 430px);
+  }
+
+  .nav {
+    padding: 14px 0;
+  }
+
+  .brand {
+    gap: 9px;
+  }
+
+  .school-logo {
+    width: 54px;
+    height: 54px;
+  }
+
+  .wordmark strong {
+    font-size: clamp(21px, 6.3vw, 28px);
+  }
+
+  .wordmark span {
+    font-size: 12px;
+  }
+
+  .menu {
+    gap: 7px;
+  }
+
+  .menu a {
+    min-height: 40px;
+    padding-inline: 5px;
+    font-size: 12px;
+  }
+
+  .hero {
+    padding-top: 26px;
+  }
+
+  h1 {
+    margin-top: 20px;
+    font-size: clamp(30px, 10vw, 38px);
+    line-height: 1.12;
+  }
+
+  .hero-copy {
+    margin-bottom: 28px;
+  }
+
+  .hero-art {
+    min-height: 300px;
+    margin-bottom: -78px !important;
+    transform: scale(0.7) !important;
+  }
+
+  .manifestation-art,
+  .tracking-art,
+  .admin-art {
+    min-height: 330px;
+  }
+
+  .steps,
+  .types,
+  .manifestation-layout,
+  .tracking-layout,
+  .admin-layout,
+  .dashboard-grid {
+    gap: 20px;
+  }
+
+  .manifestation-options {
+    grid-template-columns: 1fr;
+  }
+
+  .field-grid,
+  .radio-row,
+  .priority-row,
+  .form-actions,
+  .query-card .form-actions,
+  .result-grid,
+  .side-stack,
+  .tracking-side,
+  .admin-side-stack,
+  .summary-grid,
+  .dashboard-filters,
+  .admin-detail-list div,
+  .admin-detail-actions {
+    grid-template-columns: 1fr !important;
+  }
+
+  .radio-row,
+  .priority-row {
+    display: grid;
+  }
+
+  .choice-pill,
+  .priority-pill,
+  .protocol-message-actions .btn {
+    width: 100%;
+  }
+
+  .footer-brand {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-brand strong {
+    font-size: clamp(24px, 8vw, 30px);
+    overflow-wrap: anywhere;
+  }
+
+  .footer-pillars {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .terms-hero,
+  .notes-hero {
+    padding: 28px 0 20px !important;
+  }
+
+  .terms-card,
+  .notes-card {
+    border-radius: 14px !important;
+  }
+
+  .terms-hero-panel,
+  .notes-hero-panel {
+    padding: 24px 18px !important;
+  }
+
+  .terms-content,
+  .notes-content {
+    padding: 18px !important;
+  }
+
+  .document-heading {
+    gap: 12px !important;
+  }
+
+  .document-logo {
+    width: 56px !important;
+    height: 56px !important;
+  }
+
+  .terms-hero-panel h1,
+  .notes-hero-panel h1 {
+    font-size: clamp(28px, 9vw, 38px) !important;
+    line-height: 1.12 !important;
+    letter-spacing: 0 !important;
+  }
+
+  .terms-label,
+  .notes-label,
+  .version-tag {
+    white-space: normal !important;
+  }
+
+  .divider-title,
+  .summary-box,
+  .consultation-box,
+  .notice-box,
+  .future-box,
+  .version-card,
+  .highlight-box,
+  .warning-box {
+    border-radius: 12px !important;
+    padding: 16px !important;
+  }
+
+  .timeline {
+    padding-left: 16px !important;
+  }
+
+  .version-card::before {
+    left: -27px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .container,
+  .admin-dashboard-page .topbar .container {
+    width: min(100% - 20px, 360px);
+  }
+
+  .brand {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .school-logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .wordmark strong {
+    font-size: 20px;
+  }
+
+  .menu {
+    grid-template-columns: 1fr;
+  }
+
+  .menu a {
+    min-height: 38px;
+  }
+
+  .hero-art {
+    min-height: 270px;
+    margin-bottom: -92px !important;
+    transform: scale(0.62) !important;
+  }
+
+  .manifestation-art,
+  .tracking-art,
+  .admin-art {
+    min-height: 305px;
+  }
+
+  .btn {
+    gap: 10px;
+    padding-inline: 12px;
+  }
+
+  .btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .protocol-field svg,
+  .input-with-icon > svg {
+    left: 14px;
+  }
+
+  .protocol-field input,
+  .input-with-icon input {
+    padding-left: 48px;
+    padding-right: 44px;
+  }
+}
