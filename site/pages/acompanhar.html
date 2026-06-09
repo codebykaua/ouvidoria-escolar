@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acompanhar manifestação - Fala CETI - Amargosa</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="icon" type="image/png" href="../assets/img/logoceti1.png" />
+</head>
+<body>
+  <div class="page tracking-page">
+    <header class="topbar">
+      <div class="container nav">
+        <a class="brand" href="../index.html" aria-label="Fala CETI - Amargosa">
+          <img class="school-logo" src="../assets/img/logoceti1.png" alt="Colégio Estadual de Tempo Integral de Amargosa" />
+          <div class="wordmark">
+            <strong>Fala CETI - Amargosa</strong>
+            <span>Ouvidoria escolar digital</span>
+          </div>
+        </a>
+
+        <nav class="menu" aria-label="Navegação principal">
+          <a href="../index.html">Início</a>
+          <a href="manifestacao.html">Enviar manifestação</a>
+          <a class="active" href="acompanhar.html">Acompanhar</a>
+          <a href="notas_atualizacoes.html">Atualizações</a>
+          <a href="termos.html">Termos</a>
+          <a href="admin.html">Admin</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <div class="badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6l-7-3Z" />
+                <path d="m9 12 2 2 4-5" />
+              </svg>
+              Consulte seu protocolo com segurança.
+            </div>
+
+            <h1>Acompanhe sua <span>manifestação</span></h1>
+            <p class="hero-copy">Digite o código do protocolo para verificar o status da sua manifestação e acompanhar qualquer resposta enviada pela escola.</p>
+          </div>
+
+          <div class="hero-art tracking-art" aria-label="Ilustração de acompanhamento de manifestação">
+            <div class="art-sky"></div>
+            <div class="cloud one"></div>
+            <div class="cloud two"></div>
+            <div class="tree left"></div>
+            <div class="tree right"></div>
+
+            <div class="school">
+              <div class="roof"></div>
+              <div class="wing left"></div>
+              <div class="wing right"></div>
+              <div class="main"></div>
+              <div class="badge-mini"></div>
+              <div class="label">CETI</div>
+              <div class="door"></div>
+              <div class="window w1"></div>
+              <div class="window w2"></div>
+              <div class="window w3"></div>
+              <div class="window w4"></div>
+              <div class="window w5"></div>
+              <div class="window w6"></div>
+            </div>
+
+            <div class="bubble blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <path d="m20 20-4-4" />
+              </svg>
+            </div>
+            <div class="bubble green"><span></span></div>
+
+            <div class="person girl">
+              <div class="bag"></div>
+              <div class="hair"></div>
+              <div class="head"></div>
+              <div class="eye left"></div>
+              <div class="eye right"></div>
+              <div class="smile"></div>
+              <div class="body"></div>
+              <div class="arm left"></div>
+              <div class="arm right"></div>
+              <div class="hand"></div>
+              <div class="phone"></div>
+            </div>
+
+            <div class="tracking-board">
+              <h3>Acompanhamento</h3>
+              <div class="board-dots"><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="board-lines"><span></span><span></span><span></span></div>
+            </div>
+
+            <div class="person boy">
+              <div class="hair"></div>
+              <div class="head"></div>
+              <div class="eye left"></div>
+              <div class="eye right"></div>
+              <div class="smile"></div>
+              <div class="body"></div>
+              <div class="arm"></div>
+            </div>
+            <div class="laptop"></div>
+
+            <div class="swoosh"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container tracking-layout" aria-label="Consulta de protocolo">
+        <div class="tracking-main">
+          <form class="tracking-card query-card" id="consulta-form" novalidate>
+            <h2 class="section-title">Consultar protocolo</h2>
+            <label class="field">
+              <span class="field-label">Digite seu protocolo</span>
+              <span class="protocol-field">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="m20 20-4-4" />
+                </svg>
+                <input id="protocolo-consulta" name="protocolo" type="text" placeholder="Ex.: FALA-CETI-A7K9P2X4" autocomplete="off" />
+              </span>
+            </label>
+
+            <div class="form-actions">
+              <button class="btn btn-primary" id="consultar-manifestacao" type="submit">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="m20 20-4-4" />
+                </svg>
+                Consultar manifestação
+              </button>
+              <button class="btn" id="limpar-consulta" type="reset">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M3 6h18" />
+                  <path d="M8 6V4h8v2" />
+                  <path d="m19 6-1 14H6L5 6" />
+                  <path d="M10 11v5" />
+                  <path d="M14 11v5" />
+                </svg>
+                Limpar
+              </button>
+            </div>
+            <p class="tracking-help">Use o protocolo recebido no envio da manifestação.</p>
+            <div class="submission-feedback" id="consulta-feedback" aria-live="polite" hidden>
+              <h3 id="consulta-feedback-title"></h3>
+              <p id="consulta-feedback-message"></p>
+            </div>
+          </form>
+
+          <section class="tracking-card result-card" id="resultado-consulta" aria-label="Resultado da consulta" hidden>
+            <h2 class="section-title">Resultado da consulta</h2>
+
+            <div class="result-grid">
+              <div class="result-details">
+                <div class="detail-row">
+                  <div class="detail-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <path d="M4 9h16" />
+                      <path d="M4 15h16" />
+                      <path d="M10 3 8 21" />
+                      <path d="m16 3-2 18" />
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Protocolo:</strong>
+                    <span id="resultado-protocolo">FALA-CETI-A7K9P2X4</span>
+                  </div>
+                </div>
+
+                <div class="detail-row">
+                  <div class="detail-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <path d="M21 12a9 9 0 1 1-2.64-6.36" />
+                      <path d="M21 3v6h-6" />
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Status:</strong>
+                    <span class="status-chip" id="resultado-status">Em análise</span>
+                  </div>
+                </div>
+
+                <div class="detail-row">
+                  <div class="detail-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <path d="M9 18h6" />
+                      <path d="M10 22h4" />
+                      <path d="M8.5 14.5a6 6 0 1 1 7 0c-.9.7-1.5 1.8-1.5 3H10c0-1.2-.6-2.3-1.5-3Z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Tipo:</strong>
+                    <span id="resultado-tipo">Sugestão</span>
+                  </div>
+                </div>
+
+                <div class="detail-row">
+                  <div class="detail-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <rect x="5" y="3" width="14" height="18" rx="2" />
+                      <path d="M9 8h6" />
+                      <path d="M9 12h6" />
+                      <path d="M9 16h4" />
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Assunto:</strong>
+                    <span id="resultado-assunto">Organização da fila da merenda</span>
+                  </div>
+                </div>
+
+                <div class="detail-row">
+                  <div class="detail-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <path d="M3 21h18" />
+                      <path d="M5 21V8l7-4 7 4v13" />
+                      <path d="M9 21v-6h6v6" />
+                      <path d="M9 10h.01" />
+                      <path d="M15 10h.01" />
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Série:</strong>
+                    <span id="resultado-turma">2ª série</span>
+                  </div>
+                </div>
+
+                <div class="detail-row">
+                  <div class="detail-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <rect x="3" y="4" width="18" height="18" rx="2" />
+                      <path d="M16 2v4" />
+                      <path d="M8 2v4" />
+                      <path d="M3 10h18" />
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Data de envio:</strong>
+                    <span id="resultado-criado-em">30/04/2026</span>
+                  </div>
+                </div>
+
+                <div class="detail-row">
+                  <div class="detail-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <circle cx="12" cy="12" r="9" />
+                      <path d="M12 7v5l3 2" />
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Última atualização:</strong>
+                    <span id="resultado-atualizado-em">01/05/2026</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="progress-panel">
+                <h3>Linha do andamento</h3>
+                <div class="progress-line">
+                  <div class="progress-step done" data-progress-step="Recebida">
+                    <span class="progress-dot">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                        <path d="m5 12 5 5L20 7" />
+                      </svg>
+                    </span>
+                    Recebida
+                  </div>
+                  <div class="progress-step active" data-progress-step="Em análise">
+                    <span class="progress-dot"></span>
+                    Em análise
+                  </div>
+                  <div class="progress-step" data-progress-step="Em andamento">
+                    <span class="progress-dot">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                        <path d="m5 12 5 5L20 7" />
+                      </svg>
+                    </span>
+                    Em andamento
+                  </div>
+                  <div class="progress-step" data-progress-step="Resolvida">
+                    <span class="progress-dot">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                        <path d="m5 12 5 5L20 7" />
+                      </svg>
+                    </span>
+                    Resolvida
+                  </div>
+                </div>
+
+                <div class="reply-box">
+                  <h3>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z" />
+                    </svg>
+                    Resposta da escola
+                  </h3>
+                  <p class="reply-message" id="resultado-resposta">Sua manifestação foi recebida e encaminhada para análise da coordenação. Em breve haverá retorno.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="tracking-card protocol-messages-card" id="mensagens-protocolo-card" aria-label="Mensagens do protocolo" hidden>
+            <h2 class="section-title">Mensagens do protocolo</h2>
+
+            <div class="protocol-messages-list" id="mensagens-protocolo-lista">
+              <p class="empty-messages">Nenhuma mensagem adicional foi enviada neste protocolo.</p>
+            </div>
+
+            <label class="protocol-message-field">
+              <span class="field-label">Nova mensagem</span>
+              <span class="textarea-shell">
+                <textarea id="nova-mensagem-protocolo" maxlength="1000" placeholder="Escreva uma nova mensagem para a escola..."></textarea>
+                <span id="nova-mensagem-counter">0/1000</span>
+              </span>
+            </label>
+
+            <div class="protocol-message-actions">
+              <button class="btn btn-primary" id="enviar-mensagem-protocolo" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="m22 2-7 20-4-9-9-4 20-7Z" />
+                  <path d="M22 2 11 13" />
+                </svg>
+                Enviar mensagem
+              </button>
+            </div>
+
+            <div class="submission-feedback" id="mensagem-protocolo-feedback" aria-live="polite" hidden>
+              <h3 id="mensagem-protocolo-feedback-title"></h3>
+              <p id="mensagem-protocolo-feedback-message"></p>
+            </div>
+          </section>
+        </div>
+
+        <aside class="tracking-side">
+          <section class="info-card">
+            <h2 class="section-title">Como acompanhar</h2>
+            <div class="orientation-list">
+              <div class="orientation-item">
+                <div class="orientation-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                    <path d="M4 9h16" />
+                    <path d="M4 15h16" />
+                    <path d="M10 3 8 21" />
+                    <path d="m16 3-2 18" />
+                  </svg>
+                </div>
+                <div>
+                  <h3>1. Informe o protocolo</h3>
+                  <p>Digite o código do protocolo recebido ao enviar sua manifestação.</p>
+                </div>
+              </div>
+
+              <div class="orientation-item">
+                <div class="orientation-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7" />
+                    <path d="m20 20-4-4" />
+                  </svg>
+                </div>
+                <div>
+                  <h3>2. Consulte o andamento</h3>
+                  <p>Veja o status atual e as etapas do processo.</p>
+                </div>
+              </div>
+
+              <div class="orientation-item">
+                <div class="orientation-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                    <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z" />
+                    <path d="M8 11h.01" />
+                    <path d="M12 11h.01" />
+                    <path d="M16 11h.01" />
+                  </svg>
+                </div>
+                <div>
+                  <h3>3. Veja a resposta da escola</h3>
+                  <p>Leia as respostas e orientações enviadas pela equipe.</p>
+                </div>
+              </div>
+
+              <div class="orientation-item">
+                <div class="orientation-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                    <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9" />
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                  </svg>
+                </div>
+                <div>
+                  <h3>4. Acompanhe novas atualizações</h3>
+                  <p>Retorne sempre que quiser para verificar novidades.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="info-card">
+            <h2 class="section-title">Status possíveis</h2>
+            <div class="status-list">
+              <div class="status-row">
+                <span class="status-chip received">Recebida</span>
+                <p>Manifestação registrada com sucesso.</p>
+              </div>
+              <div class="status-row">
+                <span class="status-chip">Em análise</span>
+                <p>Está sendo analisada pela equipe.</p>
+              </div>
+              <div class="status-row">
+                <span class="status-chip progress">Em andamento</span>
+                <p>A escola está tomando providências.</p>
+              </div>
+              <div class="status-row">
+                <span class="status-chip resolved">Resolvida</span>
+                <p>A manifestação foi concluída.</p>
+              </div>
+              <div class="status-row">
+                <span class="status-chip archived">Arquivada</span>
+                <p>Manifestação encerrada e arquivada.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="info-card privacy-card">
+            <h2 class="section-title">Privacidade</h2>
+            <div class="privacy-body">
+              <div class="orientation-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6l-7-3Z" />
+                  <rect x="9" y="11" width="6" height="5" rx="1" />
+                  <path d="M10 11V9a2 2 0 0 1 4 0v2" />
+                </svg>
+              </div>
+              <div>
+                <p>Para acompanhar sua manifestação, você precisa apenas do protocolo.</p>
+                <p>Seus dados são protegidos com sigilo e responsabilidade.</p>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </section>
+
+      <section class="container">
+        <aside class="responsibility">
+          <div class="responsibility-text">
+            <div class="shield">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6l-7-3Z" />
+                <path d="m9 12 2 2 4-5" />
+              </svg>
+            </div>
+            <div>
+              <h2>Guarde seu protocolo com atenção.</h2>
+              <p>Ele é a chave para acompanhar sua manifestação e visualizar o retorno da escola.</p>
+            </div>
+          </div>
+
+          <div class="student-row" aria-hidden="true">
+            <div class="mini-person">
+              <div class="mini-hair"></div>
+              <div class="face"></div>
+              <div class="shirt"></div>
+            </div>
+            <div class="mini-person">
+              <div class="mini-hair"></div>
+              <div class="face"></div>
+              <div class="shirt"></div>
+            </div>
+            <div class="mini-person">
+              <div class="mini-hair"></div>
+              <div class="face"></div>
+              <div class="shirt"></div>
+            </div>
+            <svg class="ghost-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6l-7-3Z" />
+              <path d="m9 12 2 2 4-5" />
+            </svg>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="stripe"><span></span><span></span><span></span><span></span></div>
+      <div class="container footer-content">
+        <div class="footer-brand">
+          <img class="school-logo" src="../assets/img/logoceti1.png" alt="" aria-hidden="true" />
+          <div>
+            <strong>Fala CETI - Amargosa</strong>
+            <span>Ouvidoria escolar digital</span>
+          </div>
+        </div>
+
+        <p class="footer-copy">Um canal aberto de diálogo para construir uma escola cada vez melhor.</p>
+
+        <div class="footer-pillars">
+          <div class="pillar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6l-7-3Z" />
+            </svg>
+            Segurança
+          </div>
+          <div class="pillar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <rect x="5" y="10" width="14" height="10" rx="2" />
+              <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+              <path d="M12 14v2" />
+            </svg>
+            Sigilo
+          </div>
+          <div class="pillar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M16 21v-2a4 4 0 0 0-8 0v2" />
+              <circle cx="12" cy="7" r="4" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              <path d="M2 21v-2a4 4 0 0 1 3-3.87" />
+              <path d="M8 3.13a4 4 0 0 0 0 7.75" />
+            </svg>
+            Respeito
+          </div>
+        </div>
+
+        <p class="copyright">© 2024 Fala CETI - Amargosa. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  </div>
+  <script type="module" src="../assets/js/acompanhar.js"></script>
+</body>
+</html>

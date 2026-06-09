@@ -1,0 +1,9 @@
+name = "ouvidoria-ceti-api"
+main = "worker.js"
+compatibility_date = "2025-08-01"
+
+# Depois de criar o D1, troque database_id pelo ID real.
+[[d1_databases]]
+binding = "DB"
+database_name = "ouvidoria_ceti_db"
+database_id = "e1921831-2e3f-40fe-9619-c876b4c3837e"
