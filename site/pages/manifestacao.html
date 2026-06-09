@@ -112,15 +112,15 @@
           <h2 class="section-title">Formulário de manifestação</h2>
 
           <div class="form-section">
-            <span class="field-label">Deseja se identificar?</span>
+            <span class="field-label">Você é:</span>
             <div class="radio-row">
               <label class="choice-pill">
-                <input id="identificacao-sim" type="radio" name="identificacao" value="sim" checked />
-                Sim
+                <input id="perfil-estudante" type="radio" name="perfil" value="estudante" checked />
+                Estudante
               </label>
               <label class="choice-pill">
-                <input id="identificacao-nao" type="radio" name="identificacao" value="nao" />
-                Não
+                <input id="perfil-funcionario" type="radio" name="perfil" value="funcionario" />
+                Funcionário
               </label>
             </div>
           </div>
@@ -128,9 +128,9 @@
           <div class="field-grid" id="identification-fields">
             <label class="field">
               <span class="field-label">Nome completo</span>
-              <input id="nome" name="nome" type="text" placeholder="Digite seu nome completo" autocomplete="name" />
+              <input id="nome" name="nome" type="text" placeholder="Digite seu nome completo" autocomplete="name" required />
             </label>
-            <label class="field">
+            <label class="field" id="turma-field">
               <span class="field-label">Série</span>
               <select id="turma" name="turma">
                 <option value="">Selecione sua série</option>
@@ -140,8 +140,8 @@
               </select>
             </label>
             <label class="field">
-              <span class="field-label">E-mail para receber resposta <small>(opcional)</small></span>
-              <input id="email" name="email" type="email" placeholder="exemplo@email.com" autocomplete="email" />
+              <span class="field-label">E-mail para receber resposta <small>(obrigatório)</small></span>
+              <input id="email" name="email" type="email" placeholder="exemplo@email.com" autocomplete="email" required />
             </label>
           </div>
 

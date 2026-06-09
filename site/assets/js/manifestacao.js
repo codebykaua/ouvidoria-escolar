@@ -1,7 +1,7 @@
 import { apiRequest } from "./api.js";
 
 const form = document.getElementById("manifestacao-form");
-const identificationFields = document.getElementById("identification-fields");
+const turmaField = document.getElementById("turma-field");
 const nomeInput = document.getElementById("nome");
 const turmaSelect = document.getElementById("turma");
 const emailInput = document.getElementById("email");
@@ -22,8 +22,12 @@ function getCheckedValue(name) {
   return form.querySelector(`input[name="${name}"]:checked`)?.value || "";
 }
 
-function isIdentified() {
-  return getCheckedValue("identificacao") === "sim";
+function getProfile() {
+  return getCheckedValue("perfil") || "estudante";
+}
+
+function isStudent() {
+  return getProfile() === "estudante";
 }
 
 function setSubmitState(isSubmitting) {
@@ -53,45 +57,55 @@ function updateDescriptionCounter() {
   counter.textContent = `${descricaoInput.value.length}/2000`;
 }
 
-function syncIdentificationFields() {
-  const identified = isIdentified();
+function syncProfileFields() {
+  const student = isStudent();
 
-  identificationFields.hidden = !identified;
-  nomeInput.setAttribute("aria-required", String(identified));
-  turmaSelect.setAttribute("aria-required", String(identified));
-  nomeInput.disabled = !identified;
-  turmaSelect.disabled = !identified;
+  nomeInput.setAttribute("aria-required", "true");
+  emailInput.setAttribute("aria-required", "true");
+  turmaSelect.setAttribute("aria-required", String(student));
 
-  if (!identified) {
-    nomeInput.value = "";
+  nomeInput.disabled = false;
+  emailInput.disabled = false;
+  turmaSelect.disabled = !student;
+  turmaField.hidden = !student;
+
+  if (!student) {
     turmaSelect.value = "";
   }
 }
 
 function validateEmail(value) {
-  if (!value) return true;
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
 function validateForm() {
-  const identified = isIdentified();
+  const profile = getProfile();
+  const student = isStudent();
   const nome = nomeInput.value.trim();
   const turma = turmaSelect.value.trim();
-  const email = emailInput?.value.trim() || "";
+  const email = emailInput.value.trim().toLowerCase();
   const tipo = getCheckedValue("tipo");
   const assunto = assuntoInput.value.trim();
   const descricao = descricaoInput.value.trim();
   const prioridade = getCheckedValue("prioridade");
 
-  if (identified && !nome) {
-    return { valid: false, message: "Informe seu nome completo para enviar a manifestação identificada.", element: nomeInput };
+  if (!profile) {
+    return { valid: false, message: "Selecione se você é estudante ou funcionário.", element: form.querySelector('.radio-row') };
   }
 
-  if (identified && !turma) {
-    return { valid: false, message: "Selecione sua série para enviar a manifestação identificada.", element: turmaSelect };
+  if (!nome) {
+    return { valid: false, message: "Informe seu nome completo.", element: nomeInput };
   }
 
-  if (email && !validateEmail(email)) {
+  if (student && !turma) {
+    return { valid: false, message: "Selecione sua série.", element: turmaSelect };
+  }
+
+  if (!email) {
+    return { valid: false, message: "Informe seu e-mail para receber o protocolo e a resposta.", element: emailInput };
+  }
+
+  if (!validateEmail(email)) {
     return { valid: false, message: "Informe um e-mail válido para receber a resposta.", element: emailInput };
   }
 
@@ -114,9 +128,9 @@ function validateForm() {
   return {
     valid: true,
     data: {
-      identificado: identified,
-      nome: identified ? nome : "",
-      turma: identified ? turma : "",
+      identificado: true,
+      nome,
+      turma: student ? turma : "Funcionário",
       email,
       tipo,
       assunto,
@@ -164,15 +178,13 @@ form.addEventListener("submit", async (event) => {
     });
 
     form.reset();
-    syncIdentificationFields();
+    syncProfileFields();
     updateDescriptionCounter();
 
     showFeedback(
       "success",
       "Manifestação enviada com sucesso!",
-      validation.data.email
-        ? "Guarde este protocolo. Também enviaremos atualizações para o e-mail informado."
-        : "Guarde este protocolo para acompanhar sua manifestação.",
+      "Guarde este protocolo. Também enviaremos atualizações para o e-mail informado.",
       result.protocolo
     );
   } catch (error) {
@@ -185,17 +197,17 @@ form.addEventListener("submit", async (event) => {
 
 form.addEventListener("reset", () => {
   window.setTimeout(() => {
-    syncIdentificationFields();
+    syncProfileFields();
     updateDescriptionCounter();
   }, 0);
 });
 
-document.querySelectorAll('input[name="identificacao"]').forEach((radio) => {
-  radio.addEventListener("change", syncIdentificationFields);
+document.querySelectorAll('input[name="perfil"]').forEach((radio) => {
+  radio.addEventListener("change", syncProfileFields);
 });
 
 descricaoInput.addEventListener("input", updateDescriptionCounter);
 copyButton.addEventListener("click", copyProtocol);
 
-syncIdentificationFields();
+syncProfileFields();
 updateDescriptionCounter();
